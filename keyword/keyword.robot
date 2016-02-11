@@ -37,9 +37,9 @@ Page should display login fail
     Wait Until Page contains    Error
 
 
-Login
 
-    [arguments]     ${usernameInput}    ${passwordInput}
+Login
+    [arguments]     ${usernameInput}    ${passwordInput}    ${message}
     Go to    https://sprint3r7.wordpress.com/
     Wait Until Element Is Visible    //*[@id="masthead"]/button
     Click Element    //*[@id="masthead"]/button
@@ -50,4 +50,20 @@ Login
     Input Password  ${passwordField}    ${passwordInput}
     Unselect Checkbox    ${rememberMeCheckBox}
     Click Button    wp-submit
-    Page should display login success
+    Wait Until Page Contains    ${message}
+
+
+
+LoginRemember
+    [arguments]     ${usernameInput}    ${passwordInput}    ${message}
+    Go to    https://sprint3r7.wordpress.com/
+    Wait Until Element Is Visible    //*[@id="masthead"]/button
+    Click Element    //*[@id="masthead"]/button
+    Wait Until Element Is Visible     //*[@id="meta-2"]/ul/li[2]/a
+    Click Element     //*[@id="meta-2"]/ul/li[2]/a
+    Wait Until Element Is Visible     ${usernameField}
+    Input Text      ${usernameField}    ${usernameInput}
+    Input Password  ${passwordField}    ${passwordInput}
+    Select Checkbox    ${rememberMeCheckBox}
+    Click Button    wp-submit
+    Wait Until Page Contains    ${message}
