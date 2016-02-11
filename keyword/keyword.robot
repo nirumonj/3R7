@@ -41,8 +41,11 @@ Login
 
     [arguments]     ${usernameInput}    ${passwordInput}
     Go to    https://sprint3r7.wordpress.com/
+    Wait Until Element Is Visible    //*[@id="masthead"]/button
     Click Element    //*[@id="masthead"]/button
+    Wait Until Element Is Visible     //*[@id="meta-2"]/ul/li[2]/a
     Click Element     //*[@id="meta-2"]/ul/li[2]/a
+    Wait Until Element Is Visible     ${usernameField}
     Input Text      ${usernameField}    ${usernameInput}
     Input Password  ${passwordField}    ${passwordInput}
     Unselect Checkbox    ${rememberMeCheckBox}
